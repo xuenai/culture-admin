@@ -1,0 +1,117 @@
+// 主色
+$theme: #23a1ee;
+$theme-hover: #40b6fe;
+$theme-active: #008ee4;
+
+// 成功提示
+$success: #5ac858;
+$success-hover: #70da6e;
+$success-active: #47c445;
+
+// 警告
+$warn: #f7bb3a;
+$warn-hover: #f9c855;
+$warn-active: #efac1b;
+
+// error
+$danger: #ff5b5b;
+$danger-hover: #ff6d6d;
+$danger-active: #f14040;
+
+//可选配色
+$theColor1: #ff5b5b;
+$theColor2: #ff9051;
+$theColor3: #f7bb3a;
+$theColor4: #13d89e;
+$theColor5: #5ac858;
+$theColor6: #5599ff;
+$theColor7: #987de6;
+$theColor8: #0dcdda;
+$theColor9: #e26ed3;
+
+//背景
+$bg: #f8f8f9;
+$bg01: #fff;
+$grayDark: #f0f3fa;
+$grayLight: #f8fafe;
+
+//字体
+$font01: #263b4d;
+$font02: #64737f;
+$font03: #93a4b3;
+$font04: #5c768c;
+$font05: #6b7f8f;
+$font06: #7d8c98;
+$darkGray: #333;
+$gray :#666;
+$lightGray: #999;
+
+$f12: 12px;
+$f14: 14px;
+$f16: 16px;
+$f18: 18px;
+$f20: 20px;
+$f22: 22px;
+$f24: 24px;
+$f28: 28px;
+
+//边框
+$borderLight: #dee3ed;
+$borderDark: #adb6cc;
+
+//按钮
+$btn-cancel: #a9bed5;
+$btn-cancel-hover: #c1d1e3;
+$btn-cancel-active: #8fa7c2;
+
+//框架
+$frameBg: #323d4e;
+$frameFont: #94a1b5;
+
+/*单行文本溢出*/
+@mixin ellipsis($w:auto) {
+  width: $w;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+/*多行文本溢出*/
+@mixin ellipsisLn($line) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+}
+
+@mixin backgroundImg($image) {
+  background-image: url(../image/#{$image})
+}
+
+/*清楚浮动*/
+@mixin clearfix {
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+  }
+}
+
+.line1 {
+  @include ellipsis()
+}
+.line2 {
+  @include ellipsisLn(2)
+}
+.line3 {
+  @include ellipsisLn(3)
+}
+.line6 {
+  @include ellipsisLn(6)
+}
+

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="format-detection" content="telephone=no,email=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="yes" name="apple-touch-fullscreen" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta content="maximum-dpr=3" name="flexible" />
+    <meta name="author" content="成都中科大旗软件有限公司" />
+    <title>活动</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./scale.js"></script>
+    <script src="./jquery-1.8.3.min.js"></script>
+    <script src="./config.js"></script>
+    <!-- 活动模板  hexg 2019.8.28-->
+  </head>
+  <body>
+    <div class="product">
+      <div class="product-kill">
+        <div class="img-box no-photo">
+          <img class="img" src="" alt="" />
+          <div class="ac-tags"></div>
+        </div>
+        <div class="info-box">
+          <div class="tit"></div>
+          <div class="ac-summary">
+            时间：<span class="date"></span>
+          </div>
+          <div class="ac-summary">
+            地点：<span class="address"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      $(function() {
+        // 获取活动详情
+        utils.getAjaxData(
+          {
+            url: serverUrl + "/res/api/activity/getActivityInfoByCommodity",
+            data: {
+              siteId: utils.getQueryVariable("data-siteid"),
+              activityId: utils.getQueryVariable("data-id")
+            }
+          },
+          function(res) {
+            if (res.code === 0) {
+              utils.dataRoute = res.data.activityInfoUrl;
+              if (res.data.images) {
+                $(".img-box .img").attr("src", res.data.images.split(',')[0]);
+              }
+              $(".tit").html(res.data.name);
+              $(".address").html(res.data.address);
+              $(".date").html(res.data.useStartTime.slice(0,10) + " ~ " + res.data.useEndTime.slice(0,10));
+              var lis = "";
+              (res.data.tagNames.split(",") || []).forEach(function(item) {
+                if (item) {
+                  lis += '<div class="ac-tag">' + item + "</div>";
+                }
+              });
+              $(".ac-tags").html(lis);
+            } else {
+              $(window.frameElement).remove();
+            }
+          }
+        );
+      });
+    </script>
+  </body>
+</html>

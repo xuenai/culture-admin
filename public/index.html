@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-cn" style="font-size:50px;">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="keywords" content="<%= htmlWebpackPlugin.options.keyWords %>" />
+    <meta
+      name="description"
+      content="<%= htmlWebpackPlugin.options.description %>"
+    />
+    <title></title>
+    <link rel="stylesheet" href="http://xiumi.us/connect/ue/xiumi-ue-v5.css" />
+  </head>
+
+  <body>
+    <noscript>
+      <strong
+        >We're sorry but ts-vue-app doesn't work properly without JavaScript
+        enabled. Please enable it to continue.</strong
+      >
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+    <script
+      type="text/javascript"
+      src="//filealiyun.geeker.com.cn/ued/js/jquery-1.8.3.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://webapi.amap.com/maps?v=1.4.13&key=e8496e8ac4b0f01100b98da5bde96597&plugin=AMap.Geocoder,AMap.Autocomplete,AMap.PlaceSearch"
+    ></script>
+    <script src="//webapi.amap.com/ui/1.0/main.js?v=1.0.11"></script>
+    <!-- 监控插件 -->
+    <script
+      type="text/javascript"
+      src="http://filealiyun.geeker.com.cn/ued/ckplayer/ckplayer.js"
+    ></script>
+    <!-- 视频播放 -->
+    <script src="./UEditor/ueditor.config.js"></script>
+    <script src="./UEditor/ueditor.all.js"></script>
+    <script src="./UEditor/lang/zh-cn/zh-cn.js"></script>
+    <!-- <script src="http://xiumi.us/connect/ue/xiumi-ue-dialog-v5.js"></script> -->
+    <script src="http://filealiyun.geeker.com.cn/ued/map/city.js"></script>
+    <script>
+      if (!HTMLCanvasElement.prototype.toBlob) {
+        Object.defineProperty(HTMLCanvasElement.prototype, "toBlob", {
+          value: function(callback, type, quality) {
+            var canvas = this;
+            setTimeout(function() {
+              var binStr = atob(canvas.toDataURL(type, quality).split(",")[1]);
+              var len = binStr.length;
+              var arr = new Uint8Array(len);
+              for (var i = 0; i < len; i++) {
+                arr[i] = binStr.charCodeAt(i);
+              }
+
+              callback(new Blob([arr], { type: type || "image/png" }));
+            });
+          }
+        });
+      }
+    </script>
+    <script>
+      UE.registerUI("dialog", function(editor, uiName) {
+        var btn = new UE.ui.Button({
+          name: "xiumi-connect",
+          title: "秀米",
+          onclick: function() {
+            var dialog = new UE.ui.Dialog({
+              iframeUrl: "xiumi-ue-dialog-v5.html",
+              editor: editor,
+              name: "xiumi-connect",
+              title: "秀米图文消息助手",
+              cssRules:
+                "width: " +
+                (window.innerWidth - 60) +
+                "px;" +
+                "height: " +
+                (window.innerHeight - 60) +
+                "px;"
+            });
+            dialog.render();
+            dialog.open();
+          }
+        });
+
+        return btn;
+      });
+      var isIE = function() {
+        return window.navigator.userAgent.indexOf("MSIE") >= 1;
+      };
+      // 修复IE10及以下版本不支持dataset属性的问题，兼容transfer-dom.js中使用了dataset的问题
+      if (isIE() && window.HTMLElement) {
+        if (
+          Object.getOwnPropertyNames(HTMLElement.prototype).indexOf(
+            "dataset"
+          ) === -1
+        ) {
+          Object.defineProperty(HTMLElement.prototype, "dataset", {
+            get: function() {
+              var attributes = this.attributes;
+              var name = [],
+                value = [];
+              var obj = {};
+              for (var i = 0; i < attributes.length; i++) {
+                if (attributes[i].nodeName.slice(0, 5) == "data-") {
+                  name.push(attributes[i].nodeName.slice(5));
+                  value.push(attributes[i].nodeValue);
+                }
+              }
+              for (var j = 0; j < name.length; j++) {
+                obj[name[j]] = value[j];
+              }
+              return obj;
+            }
+          });
+        }
+      }
+    </script>
+  </body>
+</html>

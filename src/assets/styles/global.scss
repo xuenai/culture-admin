@@ -1,0 +1,513 @@
+@import "//at.alicdn.com/t/font_1202914_77zg8cijdnq.css";
+.ivu-icon-iconfont {
+  font-family: "iconfont" !important;
+}
+
+::-moz-focus-inner {
+  border: 0;
+}
+
+.ivu-select-dropdown {
+  z-index: 9999 !important;
+}
+
+.ivu-date-picker {
+  width: 200px;
+}
+
+/*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar {
+  width: 8px;
+  /*对垂直流动条有效*/
+  height: 8px;
+  /*对水平流动条有效*/
+  border: 3px;
+}
+
+/*定义滚动条的轨道颜色、内阴影及圆角*/
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: transparent;
+  border-radius: 2px;
+}
+
+/*定义滑块颜色、内阴影及圆角*/
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #e3e5e8;
+
+  &:hover {
+    background-color: #ddd;
+  }
+}
+
+/*定义两端按钮的样式*/
+::-webkit-scrollbar-button {
+  background-color: none;
+}
+
+/*定义右下角汇合处的样式*/
+::-webkit-scrollbar-corner {
+  background: none;
+}
+
+i {
+  font-style: normal;
+}
+
+* {
+  border: none;
+  outline: none;
+  // font-family: 微软雅黑 Regular;
+}
+
+.fl {
+  float: left;
+}
+
+li {
+  list-style: none;
+}
+
+.fr {
+  float: right;
+}
+
+.mt15 {
+  margin-top: 15px !important;
+}
+
+.mt20 {
+  margin-top: 20px !important;
+}
+
+.mt10 {
+  margin-top: 10px !important;
+}
+.mt5 {
+  margin-top: 5px !important;
+}
+
+.mg0 {
+  margin: 0 !important;
+}
+
+.pd0 {
+  margin: 0 !important;
+}
+
+.ml20 {
+  margin-left: 20px !important;
+}
+
+.ml10 {
+  margin-left: 10px !important;
+}
+
+.ml5 {
+  margin-left: 5px !important;
+}
+
+.pd20 {
+  padding: 20px !important;
+}
+
+.pd10 {
+  padding: 10px !important;
+}
+
+.pd15 {
+  padding: 15px !important;
+}
+
+.mg20 {
+  margin: 20px !important;
+}
+
+.m15 {
+  margin: 15px !important;
+}
+
+.none {
+  display: none;
+}
+
+.red {
+  color: $danger;
+}
+
+.hide {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tc {
+  text-align: center;
+}
+
+.ivu-form-item {
+  margin-bottom: 0;
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: ".";
+  clear: both;
+  height: 0;
+}
+
+* html .clearfix {
+  zoom: 1;
+}
+
+.cloud-img {
+  width: 100%;
+  height: 100%;
+  vertical-align: top;
+}
+
+@font-face {
+  font-family: 'iconfont';  /* project id 1202914 */
+  src: url('//at.alicdn.com/t/font_1202914_77zg8cijdnq.eot');
+  src: url('//at.alicdn.com/t/font_1202914_77zg8cijdnq.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1202914_77zg8cijdnq.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1202914_77zg8cijdnq.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1202914_77zg8cijdnq.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1202914_77zg8cijdnq.svg#iconfont') format('svg');
+}
+
+.cloud-icon {
+  font-family: iconfont !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+//蓝色字体
+.theme-blue {
+  color: $theme;
+}
+
+.red {
+  color: $theColor1;
+}
+
+//标签按钮
+.tag {
+  padding: 5px 15px;
+  height: auto !important;
+  border-radius: 4px;
+  background-color: #f0f3fa;
+
+  &+.tag {
+    margin-left: 10px;
+  }
+}
+
+//添加标签按钮
+.add-tag {
+  padding: 5px 15px !important;
+  margin-left: 10px;
+}
+
+//按钮
+.btn-primary {
+  display: inline-block;
+  line-height: 1.5;
+  padding: 6px 15px 8px;
+  background-color: $theme;
+  border-radius: 4px;
+  color: $bg01;
+
+  &:hover {
+    color: $bg01;
+    background-color: $theme-hover;
+  }
+
+  &:active {
+    color: $bg01;
+    background-color: $theme-active;
+  }
+}
+
+.btn-success {
+  display: inline-block;
+  line-height: 1.5;
+  padding: 6px 15px 8px;
+  background-color: $success;
+  border-radius: 4px;
+  color: $bg01;
+
+  &:hover {
+    color: $bg01;
+    background-color: $success-hover;
+  }
+
+  &:active {
+    color: $bg01;
+    background-color: $success-active;
+  }
+}
+
+//取消按钮
+.btn-cancel {
+  color: $bg01;
+  background-color: $btn-cancel;
+  border: 1px solid $borderLight;
+
+  &:hover {
+    color: $bg01;
+    background-color: $btn-cancel-hover;
+    border: 1px solid $borderLight;
+  }
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.daq-img {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  vertical-align: top;
+}
+
+.daq-no-photo {
+  background: #f5f5f5 url(../image/daq-no-data.png) no-repeat center center;
+  background-size: 50% auto;
+}
+
+.view-images-box {
+  position: relative;
+  overflow: hidden;
+
+  .cover {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 20;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2) url(../image/gz_play.png) no-repeat center center;
+  }
+
+  .daq-img {
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  &:hover {
+    .cover {
+      display: block;
+    }
+
+    .daq-img {
+      -webkit-transform: scale(1.1);
+      -moz-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+      -o-transform: scale(1.1);
+      transform: scale(1.1);
+      -webkit-transition: all 0.2s ease-in-out;
+      -moz-transition: all 0.2s ease-in-out;
+      -ms-transition: all 0.2s ease-in-out;
+      -o-transition: all 0.2s ease-in-out;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+}
+
+.choice-tag {
+  display: inline-block;
+  min-width: 60px;
+  padding: 0 12px;
+  height: 30px;
+  line-height: 29px;
+  border-radius: 3px;
+  text-align: center;
+  color: #999;
+  margin: 0 16px 10px 0;
+  border: 1px solid #e2e2e2;
+  vertical-align: top;
+  background: none;
+  cursor: pointer;
+  max-width: 300px;
+  @include ellipsis();
+
+  &:hover,
+  &.active {
+    color: #5ac858;
+    border-color: #5ac858;
+  }
+}
+
+.tags-box {
+  position: relative;
+  display: inline-block;
+
+  &:hover {
+    .icon {
+      display: block;
+    }
+  }
+
+  .icon {
+    position: absolute;
+    right: 7px;
+    top: -10px;
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+    color: $danger-active;
+  }
+}
+
+.input-control {
+  display: inline-block;
+  width: 100%;
+  height: 32px;
+  padding: 4px 7px;
+  line-height: 1.5;
+  font-size: 12px;
+  border: 1px solid #dcdee2;
+  border-radius: 4px;
+  color: #515a6e;
+  background-color: #fff;
+  background-image: none;
+  position: relative;
+  cursor: text;
+}
+
+.w100 {
+  width: 100px;
+}
+
+/* 添加内容模块中样式S */
+.add-annex-del_txt {
+  .ivu-upload-list-remove:hover {
+    color: #0590e4;
+  }
+
+  .ivu-upload-list-remove:before {
+    content: "删除";
+  }
+
+  .ivu-upload-list-remove {
+    float: none;
+    opacity: 1;
+    font-size: 12px;
+    margin-top: -5px;
+    color: #23a1ee;
+  }
+}
+
+/* 添加内容模块中样式E */
+
+.amap-labels {
+  z-index: 0 !important;
+}
+
+.ivu-spin-fix {
+  z-index: 99999999;
+}
+
+.video-js .vjs-big-play-button {
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+/* 加载动画*/
+
+.upload-loading {
+  color: $theme;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+/*去掉了input number类标签的前头*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+// 修改高德地图左下角图标的层级
+.amap-logo {
+  z-index: 1 !important;
+}
+
+.amap-ui-poi-picker-sugg-container {
+  line-height: 1.4;
+}
+
+[data-title] {
+  position: relative;
+
+  &::before,
+  &::after {
+    position: absolute;
+    z-index: 10;
+    top: 100%;
+    left: 50%;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateX(-50%) translateY(-5px);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+
+  &::before {
+    margin-top: 3px;
+    border: 5px solid transparent;
+    border-bottom-color: rgba(0, 0, 0, 0.7);
+    content: "";
+  }
+
+  &::after {
+    margin-top: 13px;
+    padding: 5px 8px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-size: 12px;
+    line-height: 16px;
+    white-space: nowrap;
+    content: attr(data-title);
+  }
+
+  &:hover::before,
+  &:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}

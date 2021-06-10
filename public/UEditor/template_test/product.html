@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="format-detection" content="telephone=no,email=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="yes" name="apple-touch-fullscreen" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta content="maximum-dpr=3" name="flexible" />
+    <meta name="author" content="成都中科大旗软件有限公司" />
+    <title>商品</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./scale.js"></script>
+    <script src="./jquery-1.8.3.min.js"></script>
+    <script src="./config.js"></script>
+    <!-- 商品模板  hexg 2019.8.28-->
+  </head>
+  <body>
+    <div class="product">
+      <!-- 秒杀商品 -->
+      <div class="product-kill none">
+        <div class="img-box no-photo">
+            <img class="img" src="" alt="">
+            <div class="lab">
+              <img
+                class="lab-img"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAVCAYAAABLy77vAAABlUlEQVQ4jaWUv0tXURjGP15NxR9giIEoLdqgS4tLfVdDysHNQRDUv6AhQSgHQaExaGhykIbcIkEHl6aGINSpBIOCQCkDwWjw56fhe8Xj5dzj0AOHe+55Hp73Pfec59aoJFABvgI/UyKA7Br+AfAFePi/RreAm8A7YDipVFNjw0scqN1l2pRJr3ruVSzn3CO1PtSntvYYqCmsjQJ9QA/womxrzeqdoJtj43iuzubzsdjWBtUZNVPfl5ioflN38vlvta1o9EZ9rT5LmMQwHxrdVk/VXfWsIFxUjxJGv9Tai489DdQCnZG7tQrcA/ZKDqUDqGRACzAZEXzOn13ABnCf8qgMZMAg0BwhJ4DtoJPvwAhwFtG2ZUB/hNgGPgFLwHqw/hFYjOj/ZkB9hHgKCLwEDgtczGgLdbxwCluWxwb1RkG/rzZkwArwJ3D/EKkYoqHwPgccXVSZCiq8vaajkUC7ZjUJV272E6tpP/Yyc8VRp27mJutqk5GsoQ6pP6zmqT1i9Eo9URdy0+T/qNVqqhsj3JR6N9btPz2HwtXuzPqCAAAAAElFTkSuQmCC"
+                alt=""
+              />
+              <span>秒杀</span>
+            </div>
+        </div>
+        <div class="info-box">
+          <div class="price-con">
+            <span class="txt red">&yen;</span>
+            <span class="price red js_price"></span>
+            <span class="txt del-price">&yen;<span class="js_del_price"></span></span>
+            <span class="express js_express">包邮</span>
+          </div>
+          <div class="tit"></div>
+        </div>
+      </div>
+      <!-- 普通商品 -->
+      <div class="product-normal none">
+        <div class="img-box no-photo">
+          <img class="img" src="" alt="">
+        </div>
+        <div class="info-box">
+          <div class="tit"></div>
+          <div class="price"><i>&yen;</i><span class="js_price"></span></div>
+          <div class="del-price">&yen;<span class="js_del_price"></span></div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    $(function () {
+      let $kill = $('.product-kill');
+      let $normal = $('.product-normal');
+      // 获取活动详情
+      utils.getAjaxData(
+        {
+          url: elecServerUrl + "/culturalcloud/1.0/product/detail",
+          data: {
+            productSn: utils.getQueryVariable("data-id")
+          }
+        },
+        function(res) {
+          if (res.code == 1) {
+            utils.dataRoute = res.data.url;
+            if (res.data.image) {
+              $(".img-box .img").attr("src", res.data.image);
+            }
+            $(".tit").html(res.data.productName);
+            $('.js_price').html(res.data.minSalePrice);
+            $('.js_del_price').html(res.data.marketPrice);
+            if (!res.data.marketPrice) {
+              $('.del-price').hide();
+            }
+            // 是否显示包邮
+            if (res.data.productType == 3 && res.data.freightType == 1) {
+              $(".js_express").show();
+            } else {
+              $(".js_express").hide();
+            }
+            // 是否秒杀商品或普通商品
+            if (res.data.saleType == 2) {
+              $kill.removeClass('none');
+              // 秒杀商品计算上架、下架倒计时
+            } else {
+              $normal.removeClass('none');
+            }
+          } else {
+            $(window.frameElement).remove();
+          }
+        }
+      );
+    });
+  </script>
+</html>

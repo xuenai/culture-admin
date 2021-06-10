@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="format-detection" content="telephone=no,email=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="yes" name="apple-touch-fullscreen" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta content="maximum-dpr=3" name="flexible" />
+    <meta name="author" content="成都中科大旗软件有限公司" />
+    <title>场所</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./scale.js"></script>
+    <script src="./jquery-1.8.3.min.js"></script>
+    <script src="./config.js"></script>
+    <!-- 商品模板  hexg 2019.8.28-->
+  </head>
+  <body>
+    <div class="product place">
+      <div class="product-normal">
+        <div class="img-box no-photo">
+          <img class="img" src="" alt="" />
+        </div>
+        <div class="info-box">
+          <div class="place-tags">
+          </div>
+          <div class="tit"></div>
+          <div class="place-address">
+            <span class="iconfont c-icon-weizhi"></span>
+            <span class="address"></span
+            >
+          </div>
+          <div class="place-num">
+            <span class="p1">在线活动<span class="red activityInfo"></span>个</span>
+            <span class="p3">/</span>
+            <span class="p2">可订活动室<span class="red orderRoomInfo"
+              ></span
+            >个</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    $(function() {
+      // 获取活动详情
+      utils.getAjaxData(
+        {
+          url: serverUrl + "/res/api/venue/getEditInfo",
+          data: {
+            id: utils.getQueryVariable("data-id"),
+            type: utils.getQueryVariable("data-type"),
+            siteId: utils.getQueryVariable("data-siteid")
+          }
+        },
+        function(res) {
+          if (res.code === 0) {
+            utils.dataRoute = res.data.path;
+            if (res.data.images) {
+              $(".img-box .img").attr("src", res.data.images.split(",")[0]);
+            }
+            $(".tit").html(res.data.name);
+            $(".address").html(res.data.address);
+            $(".activityInfo").html(res.data.activityInfo);
+            $(".orderRoomInfo").html(res.data.orderRoomInfo);
+            if (res.data.activityInfo == 0) {
+              $(".p1").hide();
+            }
+            if (res.data.orderRoomInfo == 0) {
+              $(".p2").hide();
+            }
+            if (res.data.activityInfo == 0 || res.data.orderRoomInfo == 0) {
+              $('.p3').hide()
+            }
+            var lis = "";
+            (res.data.tagName || []).forEach(function(item, index) {
+              if (item && index < 3) {
+                lis += '<div class="place-tag">' + item + "</div>";
+              }
+            });
+            $(".place-tags").html(lis);
+          } else {
+            // $(window.frameElement).remove();
+          }
+        }
+      );
+    });
+  </script>
+</html>
